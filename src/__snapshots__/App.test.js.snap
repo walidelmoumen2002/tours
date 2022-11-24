@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`load and displays Tours 1`] = `
+<article
+  className="single-tour"
+>
+  <img />
+  <footer>
+    <div
+      className="tour-info"
+    >
+      <h2 />
+      <p
+        className="tour-price"
+      >
+        $
+      </p>
+    </div>
+    <p>
+      ...
+      <button
+        className="btninfo"
+        onClick={[Function]}
+      >
+        show more
+      </button>
+    </p>
+    <button
+      className="removebtn "
+      onClick={[Function]}
+    >
+      Not interested
+    </button>
+  </footer>
+</article>
+`;
