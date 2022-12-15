@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useFetch from "./hooks/useFetch";
 import "./App.css";
 import Tours from "./components/Tours";
 import Loading from "./components/Loading";
+
 function App() {
   const url = "https://course-api.com/react-tours-project";
-  const [data, setData, loading, fetchData, removeData] = useFetch(url);
+  const [data, setData, loading, fetchData] = useFetch(url);
 
   if (loading) {
     return (
@@ -29,7 +30,7 @@ function App() {
     <main className="page">
       <h1>Our Tours</h1>
       <div className="line"></div>
-      <Tours tours={data} removeTour={removeData} setData={setData} />
+      <Tours tours={data} setData={setData} />
     </main>
   );
 }

@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import Tour from "./Tour";
-import useFetch from "../hooks/useFetch";
 
-const Tours = ({ tours, removeTour }) => {
+const Tours = ({ tours }) => {
   console.log("[tours]", tours);
+  const [search, setSearch] = useState("");
   const [data, setData] = useState(tours);
   const formik = useFormik({
     initialValues: {
       search: "",
     },
   });
+  const removeTour = (id) => {
+    const newTours = data.filter((tour) => tour.id !== id);
+    console.log(newTours);
+    setData(newTours);
+  };
+
   const searchTour = (word) => {
     const tour = tours.filter((tour) => {
       if (tour.name.toLowerCase().includes(word)) {
@@ -22,19 +28,20 @@ const Tours = ({ tours, removeTour }) => {
   };
   return (
     <section>
-      <input
-        type="text"
-        className="search"
-        id="search"
-        onChange={formik.handleChange}
-        value={formik.values.search}
-      />
-      <button
-        onClick={() => searchTour(formik.values.search)}
-        className="search-btn"
+      <form
+        onChange={() => {
+          searchTour(formik.values.search);
+        }}
       >
-        Search
-      </button>
+        <input
+          type="text"
+          className="search"
+          id="search"
+          onChange={formik.handleChange}
+          value={formik.values.search}
+        />
+      </form>
+
       {data.map((tour) => {
         return <Tour key={tour.id} {...tour} removeTour={removeTour} />;
       })}
