@@ -4,7 +4,6 @@ import Tour from "./Tour";
 
 const Tours = ({ tours }) => {
   console.log("[tours]", tours);
-  const [search, setSearch] = useState("");
   const [data, setData] = useState(tours);
   const formik = useFormik({
     initialValues: {
